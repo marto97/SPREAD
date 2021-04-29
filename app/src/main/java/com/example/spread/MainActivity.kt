@@ -15,5 +15,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SirActivity::class.java)
             startActivity(intent)
         }
+        val rActivityBtn = findViewById<Button>(R.id.rActivityBtn)
+        rActivityBtn.setOnClickListener {
+            val intent = Intent(this, RModelActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
