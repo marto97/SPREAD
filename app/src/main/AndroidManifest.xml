@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPREAD">
-        <activity android:name=".CanvasView"></activity>
+        <activity android:name=".CanvasView" android:parentActivityName=".ConfigureSirModelActivity"></activity>
         <activity
             android:name=".ConfigureSirModelActivity"
             android:parentActivityName=".SirActivity" />

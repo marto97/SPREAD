@@ -8,11 +8,17 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="280dp"
-        android:text="R Model is the best model"
+        android:layout_width="343dp"
+        android:layout_height="699dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="R reproduction number tells you the average number of people who will contract a contagious disease from one person with that disease. It specifically applies to a population of people who were previously free of infection and haven’t been vaccinated.\n\n
+
+        &#8226; If R0 is less than 1, each existing infection causes less than one new infection. In this case, the disease will decline and eventually die out.\n
+        &#8226; If R0 equals 1, each existing infection causes one new infection. The disease will stay alive and stable, but there won’t be an outbreak or an epidemic.\n
+        &#8226; If R0 is more than 1, each existing infection causes more than one new infection. The disease will be transmitted between people, and there may be an outbreak or epidemic."
+        android:textSize="20dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

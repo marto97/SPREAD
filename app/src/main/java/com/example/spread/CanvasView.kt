@@ -7,5 +7,11 @@ class CanvasView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas_view)
+
+        val actionBar = supportActionBar
+
+        actionBar!!.title = "SIR Model Simulation"
+
+        actionBar.setDisplayHomeAsUpEnabled(true)
     }
 }
