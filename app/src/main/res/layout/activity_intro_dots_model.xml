@@ -8,11 +8,12 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="321dp"
-        android:text="DOTS Model is the best"
+        android:layout_width="306dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="176dp"
+        android:text="An SIR model is an epidemiological model that computes the theoretical number of people infected with a contagious illness in a closed population over time."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
