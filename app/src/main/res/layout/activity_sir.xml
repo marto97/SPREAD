@@ -12,7 +12,7 @@
         android:layout_height="364dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="92dp"
-        android:text="An SIR model is an epidemiological model that computes the theoretical number of people infected with a contagious illness in a closed population over time."
+        android:text="SIR estimates the number of infected people in a population."
         android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
