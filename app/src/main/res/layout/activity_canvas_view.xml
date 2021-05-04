@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".CanvasView">
 
-    <com.example.spread.Graph
+    <com.example.spread.BallView
+        android:id="@+id/ball"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
