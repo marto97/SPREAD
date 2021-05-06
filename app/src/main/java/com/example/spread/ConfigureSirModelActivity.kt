@@ -17,9 +17,12 @@ class ConfigureSirModelActivity : AppCompatActivity() {
         val volumeSeekBar: SeekBar = findViewById(R.id.volumeSeekBar)
         val susceptibleNumber: TextView = findViewById(R.id.susceptibleNumber)
 
+        var susceptibleInt: Int = 0
+
         volumeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 susceptibleNumber.text = progress.toString()
+                susceptibleInt = progress
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -46,7 +49,7 @@ class ConfigureSirModelActivity : AppCompatActivity() {
         val startBtn = findViewById<Button>(R.id.startBtn)
         startBtn.setOnClickListener {
             val intent = Intent(this@ConfigureSirModelActivity, CanvasView::class.java)
-            //intent.putExtra("editTextNumberDecimal",editText.toString())
+            intent.putExtra("susceptibleInt",susceptibleInt)
             startActivity(intent)
         }
     }

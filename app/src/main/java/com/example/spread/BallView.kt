@@ -11,7 +11,7 @@ import android.view.View
 
 class BallView : View {
 
-    var ballCount = 10
+    var ballCount = 1
 
     var ballX = 150F
     var ballY = 200F
@@ -51,6 +51,10 @@ class BallView : View {
         vY += dy
     }
 
+    fun changeBallNumber(count: Int){
+        ballCount = count
+    }
+
     /**
      * Moves the ball around the view.
      */
@@ -85,7 +89,9 @@ class BallView : View {
         canvas!!.drawCircle(ballX, ballY, ballRad, ballPaint)
         canvas!!.drawCircle(ballXX, ballY, ballRad, ballPaint)
 
-        for(i in 1..5){
+        println(ballCount)
+        println("TEST TEST TEST TEST")
+        for(i in 1..ballCount){
             canvas!!.drawCircle((i*200).toFloat(), (i*200).toFloat(), ballRad, ballPaint)
 
         }

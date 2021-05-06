@@ -14,7 +14,7 @@ class CanvasView : AppCompatActivity() {
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        val profileName=intent.getStringExtra("editTextNumberDecimal")
+        var susceptibleInt=intent.getIntExtra("susceptibleInt", 1)
 
 
 
@@ -24,8 +24,7 @@ class CanvasView : AppCompatActivity() {
                 var endTime: Long
                 while (true) {
                     startTime = System.currentTimeMillis()
-                    println(profileName)
-                    println("TEST TEST TEST TEST")
+                    (findViewById<View>(R.id.ball) as BallView).changeBallNumber(susceptibleInt)
                     (findViewById<View>(R.id.ball) as BallView).moveBall()
                     findViewById<View>(R.id.ball).postInvalidate()
                     endTime = System.currentTimeMillis()
