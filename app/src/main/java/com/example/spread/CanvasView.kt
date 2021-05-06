@@ -14,8 +14,12 @@ class CanvasView : AppCompatActivity() {
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        var susceptibleInt=intent.getIntExtra("susceptibleInt", 1)
+        val susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
 
+        var array: Array<IntArray> = emptyArray<IntArray>()
+        for (i in 1..susceptibleInt) {
+            array += intArrayOf((0..1000).random(), (0..1800).random())
+        }
 
 
         val animationThread = Thread {
@@ -24,7 +28,7 @@ class CanvasView : AppCompatActivity() {
                 var endTime: Long
                 while (true) {
                     startTime = System.currentTimeMillis()
-                    (findViewById<View>(R.id.ball) as BallView).changeBallNumber(susceptibleInt)
+                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(array)
                     (findViewById<View>(R.id.ball) as BallView).moveBall()
                     findViewById<View>(R.id.ball).postInvalidate()
                     endTime = System.currentTimeMillis()

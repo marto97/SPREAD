@@ -5,22 +5,22 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
 class BallView : View {
 
     var ballCount = 1
+    var array: Array<IntArray> = emptyArray<IntArray>()
 
     var ballX = 150F
-    var ballY = 200F
+    var ballY = 1800F
     var ballRad = 50F
 
     var vX = 10F
     var vY = 10F
 
-    var ballXX = 300F
+    var ballXX = 1000F
 
     var ballPaint: Paint = Paint()
 
@@ -36,7 +36,7 @@ class BallView : View {
 
     private fun init() {
         ballPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        (ballPaint as Paint).color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+        (ballPaint).color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
     }
 
 
@@ -51,8 +51,8 @@ class BallView : View {
         vY += dy
     }
 
-    fun changeBallNumber(count: Int){
-        ballCount = count
+    fun parseBallsData(count: Array<IntArray>){
+        array = count
     }
 
     /**
@@ -89,11 +89,9 @@ class BallView : View {
         canvas!!.drawCircle(ballX, ballY, ballRad, ballPaint)
         canvas!!.drawCircle(ballXX, ballY, ballRad, ballPaint)
 
-        println(ballCount)
-        println("TEST TEST TEST TEST")
-        for(i in 1..ballCount){
-            canvas!!.drawCircle((i*200).toFloat(), (i*200).toFloat(), ballRad, ballPaint)
 
+        for (i in array.indices) {
+            canvas!!.drawCircle(array[i][0].toFloat(), array[i][1].toFloat(), ballRad, ballPaint)
         }
 
     }
