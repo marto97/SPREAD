@@ -11,12 +11,16 @@ import android.view.View
 
 class BallView : View {
 
+    var ballCount = 10
+
     var ballX = 150F
     var ballY = 200F
     var ballRad = 50F
 
-    var vX = 1F
-    var vY = 1F
+    var vX = 10F
+    var vY = 10F
+
+    var ballXX = 300F
 
     var ballPaint: Paint = Paint()
 
@@ -79,6 +83,13 @@ class BallView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas!!.drawCircle(ballX, ballY, ballRad, ballPaint)
+        canvas!!.drawCircle(ballXX, ballY, ballRad, ballPaint)
+
+        for(i in 1..5){
+            canvas!!.drawCircle((i*200).toFloat(), (i*200).toFloat(), ballRad, ballPaint)
+
+        }
+
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
