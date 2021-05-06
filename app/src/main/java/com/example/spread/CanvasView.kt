@@ -18,7 +18,7 @@ class CanvasView : AppCompatActivity() {
 
         var array: Array<IntArray> = emptyArray<IntArray>()
         for (i in 1..susceptibleInt) {
-            array += intArrayOf((0..1000).random(), (0..1800).random())
+            array += intArrayOf((30..1000).random(), (30..1800).random())
         }
 
 

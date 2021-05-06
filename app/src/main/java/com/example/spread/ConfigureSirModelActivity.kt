@@ -17,7 +17,7 @@ class ConfigureSirModelActivity : AppCompatActivity() {
         val volumeSeekBar: SeekBar = findViewById(R.id.volumeSeekBar)
         val susceptibleNumber: TextView = findViewById(R.id.susceptibleNumber)
 
-        var susceptibleInt: Int = 0
+        var susceptibleInt: Int = 25
 
         volumeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

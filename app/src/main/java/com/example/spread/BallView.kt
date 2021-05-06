@@ -10,12 +10,11 @@ import android.view.View
 
 class BallView : View {
 
-    var ballCount = 1
     var array: Array<IntArray> = emptyArray<IntArray>()
 
     var ballX = 150F
     var ballY = 1800F
-    var ballRad = 50F
+    var ballRad = 30F
 
     var vX = 10F
     var vY = 10F
@@ -93,7 +92,6 @@ class BallView : View {
         for (i in array.indices) {
             canvas!!.drawCircle(array[i][0].toFloat(), array[i][1].toFloat(), ballRad, ballPaint)
         }
-
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
