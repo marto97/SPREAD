@@ -7,6 +7,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.red
+import androidx.core.graphics.toColor
 
 class BallView : View {
 
@@ -22,6 +24,7 @@ class BallView : View {
     var ballXX = 1000F
 
     var ballPaint: Paint = Paint()
+    var redBallPaint: Paint = Paint()
 
     constructor(context: Context?) : super(context) {
         init()
@@ -36,6 +39,8 @@ class BallView : View {
     private fun init() {
         ballPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         (ballPaint).color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+
+        redBallPaint.setColor(Color.RED)
     }
 
 
@@ -85,8 +90,8 @@ class BallView : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        canvas!!.drawCircle(ballX, ballY, ballRad, ballPaint)
-        canvas!!.drawCircle(ballXX, ballY, ballRad, ballPaint)
+        canvas!!.drawCircle(ballX, ballY, ballRad, redBallPaint)
+        canvas!!.drawCircle(ballXX, ballY, ballRad, redBallPaint)
 
 
         for (i in array.indices) {
