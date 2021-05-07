@@ -2,6 +2,8 @@ package com.example.spread
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 
 class RModelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,5 +15,10 @@ class RModelActivity : AppCompatActivity() {
         actionBar!!.title = "R Model"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
+        setupHyperlink()
+    }
+    fun setupHyperlink() {
+        val linkTextView = findViewById<TextView>(R.id.activity_r_link)
+        linkTextView.setMovementMethod(LinkMovementMethod.getInstance())
     }
 }
