@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SPREAD</string>
+    <string name="hyperlink">Learn more about SIR model at <a href="https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model">maa.org</a></string>
 </resources>
