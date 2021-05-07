@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SPREAD</string>
-    <string name="hyperlink">Learn more about SIR model at <a href="https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model">maa.org</a></string>
+    <string name="hyperlinkSir">Learn more about SIR model at <a href="https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model">maa.org</a></string>
+    <string name="hyperlinkDots">Learn more about DOTS model at <a href="https://www.the-scientist.com/reading-frames/connecting-the-dots-67839">the-scientist.com</a></string>
 </resources>

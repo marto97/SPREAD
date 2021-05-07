@@ -2,6 +2,8 @@ package com.example.spread
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 
 class IntroDotsModel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,5 +15,12 @@ class IntroDotsModel : AppCompatActivity() {
         actionBar!!.title = "DOTS Model"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
+
+        setupHyperlink()
+    }
+
+    fun setupHyperlink() {
+        val linkTextView = findViewById<TextView>(R.id.activity_dots_link)
+        linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

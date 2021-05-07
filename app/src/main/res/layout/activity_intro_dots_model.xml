@@ -8,12 +8,33 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="306dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="176dp"
-        android:text="An SIR model is an epidemiological model that computes the theoretical number of people infected with a contagious illness in a closed population over time."
+        android:layout_width="381dp"
+        android:layout_height="429dp"
+        android:layout_marginTop="48dp"
+        android:text="DOTS expresses the following estimation the reproduction number \n\n
+
+R = Duration x Opportunities x Transmission probability x Susceptibility \n\n
+
+If an infected person is infectious on average for a duration of 7 days, has 5 opportunities per day to interacts with new persons, if the probability to transmit the disease to another person is 5%  and if only 70% of the encountered  persons are susceptible to get infected, then R can be estimated as 7 x 5 x 0.05 x 0.7 = 1,225. \n\n
+
+If Opportunities is reduced to 2, then R = 7 x 2 x 0.05 x 0.7 = 0,49.
+"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_dots_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyperlinkDots"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709" />
 </androidx.constraintlayout.widget.ConstraintLayout>
