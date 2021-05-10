@@ -16,9 +16,9 @@ class CanvasView : AppCompatActivity() {
 
         val susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
 
-        var array: Array<IntArray> = emptyArray<IntArray>()
+        var ballsPosition: Array<IntArray> = emptyArray<IntArray>()
         for (i in 1..susceptibleInt) {
-            array += intArrayOf((30..1000).random(), (30..1800).random())
+            ballsPosition += intArrayOf((30..1000).random(), (30..1800).random())
         }
 
 
@@ -28,7 +28,7 @@ class CanvasView : AppCompatActivity() {
                 var endTime: Long
                 while (true) {
                     startTime = System.currentTimeMillis()
-                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(array)
+                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(ballsPosition)
                     (findViewById<View>(R.id.ball) as BallView).moveBall()
                     findViewById<View>(R.id.ball).postInvalidate()
                     endTime = System.currentTimeMillis()

@@ -12,7 +12,7 @@ import androidx.core.graphics.toColor
 
 class BallView : View {
 
-    var array: Array<IntArray> = emptyArray<IntArray>()
+    var ballsPosition: Array<IntArray> = emptyArray<IntArray>()
 
     var ballX = 150F
     var ballY = 1800F
@@ -55,8 +55,8 @@ class BallView : View {
         vY += dy
     }
 
-    fun parseBallsData(count: Array<IntArray>){
-        array = count
+    fun parseBallsData(data: Array<IntArray>){
+        ballsPosition = data
     }
 
     /**
@@ -94,8 +94,8 @@ class BallView : View {
         canvas!!.drawCircle(ballXX, ballY, ballRad, redBallPaint)
 
 
-        for (i in array.indices) {
-            canvas!!.drawCircle(array[i][0].toFloat(), array[i][1].toFloat(), ballRad, ballPaint)
+        for (i in ballsPosition.indices) {
+            canvas!!.drawCircle(ballsPosition[i][0].toFloat(), ballsPosition[i][1].toFloat(), ballRad, ballPaint)
         }
     }
 
