@@ -7,12 +7,15 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.core.graphics.red
 import androidx.core.graphics.toColor
 
 class BallView : View {
 
     var ballsPosition: Array<IntArray> = emptyArray<IntArray>()
+
+    var balls: Array<Ball> = arrayOf(Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800))
 
     var ballX = 150F
     var ballY = 1800F
@@ -57,6 +60,11 @@ class BallView : View {
 
     fun parseBallsData(data: Array<IntArray>){
         ballsPosition = data
+
+        for(i in 1..10){
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800)
+        }
+
     }
 
     /**
@@ -89,10 +97,20 @@ class BallView : View {
     }
 
     override fun onDraw(canvas: Canvas?) {
+
         super.onDraw(canvas)
+
+
+
         canvas!!.drawCircle(ballX, ballY, ballRad, redBallPaint)
         canvas!!.drawCircle(ballXX, ballY, ballRad, redBallPaint)
 
+       // ball.moveBall()
+        //ball.draw(canvas)
+
+        for(i in 1..10){
+            balls[i].draw(canvas)
+        }
 
         for (i in ballsPosition.indices) {
             canvas!!.drawCircle(ballsPosition[i][0].toFloat(), ballsPosition[i][1].toFloat(), ballRad, ballPaint)
@@ -113,5 +131,56 @@ class BallView : View {
         return super.onTouchEvent(event)
     }
 
+    class Ball (var _xPos: Float, var _yPos: Float, _width: Int, _height: Int){
+        // property (data member)
+        private var xPos: Float = _xPos
+        private var yPos: Float = _yPos
+        private var width = _width
+        private var height = _height
+        private var vX = 10F
+        private var vY = 10F
+
+        private var ballRadius: Float = 30F
+        private var redBallPaint: Paint = Paint()
+
+
+
+        private fun init() {
+
+            redBallPaint.setColor(Color.GREEN)
+        }
+
+        fun moveBall() {
+            xPos += vX
+            yPos += vY
+
+            if(xPos > width - ballRadius) {   //Ball exited the right margin
+                val overshoot = xPos - (width - ballRadius)
+                xPos -= overshoot * 2
+                vX = -vX
+
+            } else if (xPos < ballRadius) {   //Ball exited the left border
+                val overshoot = ballRadius - xPos
+                xPos += overshoot * 2
+                vX = -vX
+            }
+
+            if(yPos > height - ballRadius) {  //Ball exited below
+                val overshoot = yPos - (height - ballRadius)
+                yPos -= overshoot * 2
+                vY = -vY
+            } else if(yPos < ballRadius) {    //Ball exited above
+                val overshoot = ballRadius - yPos
+                yPos += overshoot * 2
+                vY = -vY
+            }
+        }
+
+        fun draw(canvas: Canvas?){
+            init()
+            moveBall()
+            canvas!!.drawCircle(xPos, yPos, ballRadius, redBallPaint)
+        }
+    }
 
 }
