@@ -16,6 +16,7 @@ class CanvasView : AppCompatActivity() {
 
         val susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
         val infectedInt = intent.getIntExtra("infectedInt", 1)
+        val recoveredInt = intent.getIntExtra("recoveredInt", 1)
 
         var ballsPosition: Array<IntArray> = emptyArray()
         for (i in 1..susceptibleInt) {
@@ -29,7 +30,7 @@ class CanvasView : AppCompatActivity() {
                 var endTime: Long
                 while (true) {
                     startTime = System.currentTimeMillis()
-                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(susceptibleInt, infectedInt)
+                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(susceptibleInt, infectedInt, recoveredInt)
                     findViewById<View>(R.id.ball).postInvalidate()
                     endTime = System.currentTimeMillis()
                     Thread.sleep(16 - (endTime - startTime))
