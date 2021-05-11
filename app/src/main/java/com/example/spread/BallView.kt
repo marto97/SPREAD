@@ -5,29 +5,15 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
-import android.widget.ArrayAdapter
-import androidx.core.graphics.red
-import androidx.core.graphics.toColor
 
 class BallView : View {
 
-    var ballsPosition: Array<IntArray> = emptyArray<IntArray>()
+    private var balls: Array<Ball> = arrayOf()
+    private var susceptibleInt = 1
 
-    var balls: Array<Ball> = arrayOf()
-
-    var ballX = 150F
-    var ballY = 1800F
-    var ballRad = 30F
-
-    var vX = 10F
-    var vY = 10F
-
-    var ballXX = 1000F
-
-    var ballPaint: Paint = Paint()
-    var redBallPaint: Paint = Paint()
+    private var ballPaint: Paint = Paint()
+    private var redBallPaint: Paint = Paint()
 
     constructor(context: Context?) : super(context) {
         init()
@@ -43,43 +29,14 @@ class BallView : View {
         ballPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         (ballPaint).color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
 
-        redBallPaint.setColor(Color.RED)
+        redBallPaint.color = Color.RED
     }
 
-    fun parseBallsData(data: Array<IntArray>){
-        ballsPosition = data
+    fun parseBallsData(_susceptibleInt: Int){
+        susceptibleInt = _susceptibleInt
 
-        for(i in 1..10){
+        for(i in 1..susceptibleInt){
             balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, ballPaint)
-        }
-    }
-
-    /**
-     * Moves the ball around the view.
-     */
-    fun moveBall() {
-        ballX += vX
-        ballY += vY
-
-        if(ballX > width - ballRad) {   //Ball exited the right margin
-            val overshoot = ballX - (width - ballRad)
-            ballX -= overshoot * 2
-            vX = -vX
-
-        } else if (ballX < ballRad) {   //Ball exited the left border
-            val overshoot = ballRad - ballX
-            ballX += overshoot * 2
-            vX = -vX
-        }
-
-        if(ballY > height - ballRad) {  //Ball exited below
-            val overshoot = ballY - (height - ballRad)
-            ballY -= overshoot * 2
-            vY = -vY
-        } else if(ballY < ballRad) {    //Ball exited above
-            val overshoot = ballRad - ballY
-            ballY += overshoot * 2
-            vY = -vY
         }
     }
 
@@ -87,16 +44,10 @@ class BallView : View {
 
         super.onDraw(canvas)
 
-        canvas!!.drawCircle(ballX, ballY, ballRad, redBallPaint)
-        canvas!!.drawCircle(ballXX, ballY, ballRad, redBallPaint)
-
-        for(i in 1..10){
+        for(i in 1..susceptibleInt){
             balls[i].draw(canvas)
         }
 
-        for (i in ballsPosition.indices) {
-            canvas!!.drawCircle(ballsPosition[i][0].toFloat(), ballsPosition[i][1].toFloat(), ballRad, ballPaint)
-        }
     }
 
 }
