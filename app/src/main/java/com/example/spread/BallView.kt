@@ -11,9 +11,10 @@ class BallView : View {
 
     private var balls: Array<Ball> = arrayOf()
     private var susceptibleInt = 1
+    private var infectedInt = 1
 
-    private var ballPaint: Paint = Paint()
-    private var redBallPaint: Paint = Paint()
+    private var bluePaint: Paint = Paint()
+    private var redPaint: Paint = Paint()
 
     constructor(context: Context?) : super(context) {
         init()
@@ -26,17 +27,21 @@ class BallView : View {
     }
 
     private fun init() {
-        ballPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        (ballPaint).color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+        bluePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
 
-        redBallPaint.color = Color.RED
+        redPaint.color = Color.RED
     }
 
-    fun parseBallsData(_susceptibleInt: Int){
+    fun parseBallsData(_susceptibleInt: Int, _infectedInt: Int){
         susceptibleInt = _susceptibleInt
+        infectedInt = _infectedInt
 
         for(i in 1..susceptibleInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, ballPaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint)
+        }
+        for(i in 1..infectedInt){
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint)
         }
     }
 
@@ -44,7 +49,9 @@ class BallView : View {
 
         super.onDraw(canvas)
 
-        for(i in 1..susceptibleInt){
+        val sum = susceptibleInt+infectedInt
+
+        for(i in 1..sum){
             balls[i].draw(canvas)
         }
 
