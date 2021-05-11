@@ -46,25 +46,12 @@ class BallView : View {
         redBallPaint.setColor(Color.RED)
     }
 
-
-    /**
-     * Changes the velocity of the ball.
-     *
-     * @param vx: Int delta x
-     * @param vy: Int delta y
-     */
-    fun addVelocity(dx: Float, dy: Float) {
-        vX += dx
-        vY += dy
-    }
-
     fun parseBallsData(data: Array<IntArray>){
         ballsPosition = data
 
         for(i in 1..10){
             balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, ballPaint)
         }
-
     }
 
     /**
@@ -100,13 +87,8 @@ class BallView : View {
 
         super.onDraw(canvas)
 
-
-
         canvas!!.drawCircle(ballX, ballY, ballRad, redBallPaint)
         canvas!!.drawCircle(ballXX, ballY, ballRad, redBallPaint)
-
-       // ball.moveBall()
-        //ball.draw(canvas)
 
         for(i in 1..10){
             balls[i].draw(canvas)
@@ -115,20 +97,6 @@ class BallView : View {
         for (i in ballsPosition.indices) {
             canvas!!.drawCircle(ballsPosition[i][0].toFloat(), ballsPosition[i][1].toFloat(), ballRad, ballPaint)
         }
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if(event!!.action == MotionEvent.ACTION_DOWN) {
-            val xDistance = event.x - ballX
-            val yDistance = event.y - ballY
-
-            val deltaX = -xDistance / 25
-            val deltaY = -yDistance / 25
-
-            addVelocity(deltaX, deltaY)
-        }
-
-        return super.onTouchEvent(event)
     }
 
 }
