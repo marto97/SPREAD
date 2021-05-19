@@ -15,7 +15,7 @@ class Ball (_xPos: Float, _yPos: Float, _width: Int, _height: Int, _paint: Paint
 
     private val paint: Paint = _paint
 
-    private var ballRadius: Float = 30F
+    private var ballRadius: Float = 10F
 
     private fun moveBall() {
         xPos += vX

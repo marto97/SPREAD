@@ -36,29 +36,21 @@ class BallView : View {
         greenPaint.color = Color.GREEN
     }
 
-    fun parseBallsData(_susceptibleInt: Int, _infectedInt: Int, _recoveredInt: Int){
+    fun parseBallsData(_balls: Array<Ball>, _susceptibleInt: Int, _infectedInt: Int, _recoveredInt: Int){
         susceptibleInt = _susceptibleInt
         infectedInt = _infectedInt
         recoveredInt = _recoveredInt
 
-        for(i in 1..susceptibleInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint)
-        }
-        for(i in 1..infectedInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint)
-        }
-        for(i in 1..recoveredInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint)
-        }
+        balls = _balls
     }
 
     override fun onDraw(canvas: Canvas?) {
 
         super.onDraw(canvas)
 
-        val sum = susceptibleInt+infectedInt+recoveredInt
+        val sum = susceptibleInt+infectedInt+recoveredInt-1
 
-        for(i in 1..sum){
+        for(i in 0..sum){
             balls[i].draw(canvas)
         }
 
