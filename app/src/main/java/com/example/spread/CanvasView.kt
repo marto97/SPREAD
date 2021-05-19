@@ -16,11 +16,10 @@ class CanvasView : AppCompatActivity() {
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        var bluePaint: Paint = Paint()
         var redPaint: Paint = Paint()
         var greenPaint: Paint = Paint()
 
-        bluePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        var bluePaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
         bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
 
         redPaint.color = Color.RED
