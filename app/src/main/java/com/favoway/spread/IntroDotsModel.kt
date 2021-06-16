@@ -1,4 +1,4 @@
-package com.example.spread
+package com.favoway.spread
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

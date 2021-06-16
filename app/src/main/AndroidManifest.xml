@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.spread">
+    package="com.favoway.spread">
 
     <application
         android:allowBackup="true"
@@ -9,20 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPREAD">
-        <activity android:name=".CanvasView" android:parentActivityName=".ConfigureSirModelActivity"></activity>
+        <activity android:name="com.favoway.spread.CanvasView" android:parentActivityName="com.favoway.spread.ConfigureSirModelActivity"></activity>
         <activity
-            android:name=".ConfigureSirModelActivity"
-            android:parentActivityName=".SirActivity" />
+            android:name="com.favoway.spread.ConfigureSirModelActivity"
+            android:parentActivityName="com.favoway.spread.SirActivity" />
         <activity
-            android:name=".IntroDotsModel"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.favoway.spread.IntroDotsModel"
+            android:parentActivityName="com.favoway.spread.MainActivity" />
         <activity
-            android:name=".RModelActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.favoway.spread.RModelActivity"
+            android:parentActivityName="com.favoway.spread.MainActivity" />
         <activity
-            android:name=".SirActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:name="com.favoway.spread.SirActivity"
+            android:parentActivityName="com.favoway.spread.MainActivity" />
+        <activity android:name="com.favoway.spread.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

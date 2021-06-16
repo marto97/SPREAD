@@ -1,4 +1,4 @@
-package com.example.spread
+package com.favoway.spread
 
 import android.graphics.Canvas
 import android.graphics.Paint

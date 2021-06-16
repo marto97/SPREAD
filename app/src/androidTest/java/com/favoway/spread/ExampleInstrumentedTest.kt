@@ -1,4 +1,4 @@
-package com.example.spread
+package com.favoway.spread
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
