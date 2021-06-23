@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPREAD">
-        <activity android:name="com.favoway.spread.CanvasViewR" android:parentActivityName="com.favoway.spread.ConfigureSirModelActivity"></activity>
-        <activity android:name="com.favoway.spread.CanvasView" android:parentActivityName="com.favoway.spread.ConfigureRModelActivity"></activity>
+        <activity
+            android:name="com.favoway.spread.CanvasViewR"
+            android:parentActivityName="com.favoway.spread.ConfigureRModelActivity"></activity>
+        <activity
+            android:name="com.favoway.spread.CanvasViewSIR"
+            android:parentActivityName="com.favoway.spread.ConfigureSirModelActivity"></activity>
         <activity
             android:name="com.favoway.spread.ConfigureSirModelActivity"
             android:parentActivityName="com.favoway.spread.SirActivity" />

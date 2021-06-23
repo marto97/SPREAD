@@ -81,7 +81,7 @@ class ConfigureRModelActivity : AppCompatActivity() {
 
         val startBtnR = findViewById<Button>(R.id.startBtnR)
         startBtnR.setOnClickListener {
-            val intent = Intent(this@ConfigureRModelActivity, CanvasView::class.java)
+            val intent = Intent(this@ConfigureRModelActivity, CanvasViewR::class.java)
             intent.putExtra("susceptibleInt",susceptibleInt)
             intent.putExtra("infectedInt",infectedInt)
             intent.putExtra("recoveredInt",recoveredInt)

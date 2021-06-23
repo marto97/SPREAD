@@ -12,7 +12,7 @@ class CanvasViewR : AppCompatActivity() {
         setContentView(R.layout.activity_canvas_view)
         val actionBar = supportActionBar
 
-        actionBar!!.title = "SIR Model Simulation"
+        actionBar!!.title = "R Model Simulation"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
@@ -65,5 +65,7 @@ class CanvasViewR : AppCompatActivity() {
         }
 
         animationThread.start()
+
+
     }
 }
