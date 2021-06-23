@@ -10,8 +10,8 @@ class Ball (_xPos: Float, _yPos: Float, _width: Int, _height: Int, _paint: Paint
     private var yPos: Float = _yPos
     private var width = _width
     private var height = _height
-    private var vX = 10F
-    private var vY = 10F
+    private var vX = (5..20).random().toFloat()
+    private var vY = (5..20).random().toFloat()
 
     private val paint: Paint = _paint
 
