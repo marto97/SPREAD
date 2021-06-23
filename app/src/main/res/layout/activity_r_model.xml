@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".R_ModelActivity">
+    tools:context=".RModelActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -33,4 +33,20 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.555" />
+
+    <Button
+        android:id="@+id/nextBtnR"
+        android:layout_width="143dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="498dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="159dp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
