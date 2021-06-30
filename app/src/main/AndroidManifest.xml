@@ -22,6 +22,9 @@
             android:name="com.favoway.spread.ConfigureRModelActivity"
             android:parentActivityName="com.favoway.spread.RModelActivity" />
         <activity
+            android:name="com.favoway.spread.ConfigureDotsModelActivity"
+            android:parentActivityName="com.favoway.spread.IntroDotsModel" />
+        <activity
             android:name="com.favoway.spread.IntroDotsModel"
             android:parentActivityName="com.favoway.spread.MainActivity" />
         <activity
