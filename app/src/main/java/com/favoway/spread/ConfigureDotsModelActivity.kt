@@ -1,9 +1,8 @@
 package com.favoway.spread
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 
@@ -12,108 +11,93 @@ class ConfigureDotsModelActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_configure_dots_model)
 
-        val susceptibleSeekBar: SeekBar = findViewById(R.id.susceptibleSeekBarR)
-        val susceptibleNumber: TextView = findViewById(R.id.susceptibleNumberR)
+        val durationSeekBar: SeekBar = findViewById(R.id.durationSeekBarDots)
+        val durationNumber: TextView = findViewById(R.id.durationNumberDots)
+        var durationInt = 7
+
+        val opportunitiesSeekBar: SeekBar = findViewById(R.id.opportunitiesSeekBarDots)
+        val opportunitiesNumber: TextView = findViewById(R.id.opportunitiesNumberDots)
+        var opportunitiesInt = 5
+
+        val transmissionSeekBar: SeekBar = findViewById(R.id.transmissionSeekBarDots)
+        val transmissionNumber: TextView = findViewById(R.id.transmissionNumberDots)
+        var transmissionFloat = 0.05
+
+        val susceptibilitySeekBar: SeekBar = findViewById(R.id.susceptibilitySeekBarDots)
+        val susceptibilityNumber: TextView = findViewById(R.id.susceptibilityNumberDots)
+        var susceptibilityFloat = 0.7
 
         val sumDots: TextView = findViewById(R.id.sumDots)
 
-
-        var susceptibleInt = 25
-
-        val infectedSeekBar: SeekBar = findViewById(R.id.infectedSeekBarR)
-        val infectedNumber: TextView = findViewById(R.id.infectedNumberR)
-
-        var infectedInt = 25
-
-            susceptibleSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            durationSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                susceptibleNumber.text = progress.toString()
-                susceptibleInt = progress
-                sumDots.text = (susceptibleInt*infectedInt).toString()
+                durationNumber.text = progress.toString()
+                durationInt = progress
+                sumDots.text = (Math.round((durationInt*opportunitiesInt*transmissionFloat*susceptibilityFloat)* 1000) / 1000.0).toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
             }
-
         })
 
 
 
-        infectedSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        opportunitiesSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                infectedNumber.text = progress.toString()
-                infectedInt = progress
-                sumDots.text = (susceptibleInt*infectedInt).toString()
+                opportunitiesNumber.text = progress.toString()
+                opportunitiesInt = progress
+                sumDots.text = (Math.round((durationInt*opportunitiesInt*transmissionFloat*susceptibilityFloat)* 1000) / 1000.0).toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
             }
         })
 
-        val recoveredSeekBar: SeekBar = findViewById(R.id.recoveredSeekBarR)
-        val recoveredNumber: TextView = findViewById(R.id.recoveredNumberR)
-
-        var recoveredInt = 25
-
-        recoveredSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        transmissionSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                recoveredNumber.text = progress.toString()
-                recoveredInt = progress
+                val valueTransmission = (progress.toFloat() / 100.0)
+                transmissionNumber.text = "$progress%"
+                transmissionFloat = valueTransmission
+
+                sumDots.text = (Math.round((durationInt*opportunitiesInt*transmissionFloat*susceptibilityFloat)* 1000) / 1000.0).toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
             }
         })
 
-        val rNumberSeekBar: SeekBar = findViewById(R.id.RNumberSeekBarR)
-        val rNumberNumber: TextView = findViewById(R.id.RNumberR)
-
-        //var rNumberInt = 1
-
-        rNumberSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+        susceptibilitySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                val value = (progress.toFloat() / 10.0).toFloat()
-                rNumberNumber.text = value.toString()
-                //rNumberInt = value.toInt()
+                val value = (progress.toFloat() / 100.0)
+                susceptibilityFloat = value
+                susceptibilityNumber.text = "$progress%"
+
+                sumDots.text = (Math.round((durationInt*opportunitiesInt*transmissionFloat*susceptibilityFloat)* 1000) / 1000.0).toString()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
             }
         })
 
         val actionBar = supportActionBar
 
-        actionBar!!.title = "R Number"
+        actionBar!!.title = "DOTS Model"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 
-        val startBtnR = findViewById<Button>(R.id.startBtnR)
-        startBtnR.setOnClickListener {
-            val intent = Intent(this@ConfigureDotsModelActivity, CanvasViewR::class.java)
-            intent.putExtra("susceptibleInt",susceptibleInt)
-            intent.putExtra("infectedInt",infectedInt)
-            intent.putExtra("recoveredInt",recoveredInt)
-            startActivity(intent)
-        }
     }
 }
