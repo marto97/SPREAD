@@ -1,19 +1,19 @@
 package com.favoway.spread
 
 import android.graphics.Color
-import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.anychart.AnyChartView
-import com.anychart.core.annotations.Line
+import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
-import java.security.KeyStore
-import java.util.Random
+
+
+
+
 
 class CanvasViewSIR : AppCompatActivity() {
 
@@ -23,6 +23,15 @@ class CanvasViewSIR : AppCompatActivity() {
     lateinit var lineData:LineData
     lateinit var lineDataSet2:LineDataSet
     lateinit var lineData2:LineData
+    var dataSets: ArrayList<ILineDataSet> = ArrayList()
+    var values: ArrayList<Entry> = ArrayList()
+
+    private val colors = intArrayOf(
+        ColorTemplate.VORDIPLOM_COLORS[0],
+        ColorTemplate.VORDIPLOM_COLORS[1],
+        ColorTemplate.VORDIPLOM_COLORS[2]
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_canvas_view_sir)
@@ -53,12 +62,31 @@ class CanvasViewSIR : AppCompatActivity() {
         lineData = LineData(lineDataSet2)
         lineData2 = LineData(lineDataSet)
 
+        for (z in 0..2) {
+            val values: ArrayList<Entry> = ArrayList()
+            for (i in 0 until 10) {
+                val `val`: Double = Math.random() * 12 + 3
+                values.add(Entry(i.toFloat(), `val`.toFloat()))
+            }
+            val d = LineDataSet(values, "DataSet " + (z + 1))
+            d.lineWidth = 2.5f
+            d.circleRadius = 4f
+            val color: Int = colors.get(z % colors.size)
+            d.color = color
+            d.setCircleColor(color)
+            dataSets.add(d)
+        }
+
+        val data = LineData(dataSets)
+        //chart.setData(data)
+
         val lineChart = findViewById<View>(R.id.line_chart) as LineChart
 
-        lineChart.data = lineData
+        //lineChart.setData(lineData);
+        lineChart.setData(data);
 
         lineDataSet.setColors(Color.RED)
-        lineDataSet.valueTextColor=Color.BLUE
+        lineDataSet.valueTextColor=Color.RED
         lineDataSet.valueTextSize = 20f
 
         lineDataSet2.setColors(Color.BLUE)
