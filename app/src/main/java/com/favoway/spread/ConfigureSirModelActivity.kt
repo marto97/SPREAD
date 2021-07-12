@@ -73,6 +73,26 @@ class ConfigureSirModelActivity : AppCompatActivity() {
             }
         })
 
+        val durationSeekBar: SeekBar = findViewById(R.id.durationSeekBarSIR)
+        val durationNumber: TextView = findViewById(R.id.durationNumberSIR)
+
+        var durationInt = 25
+
+        durationSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                durationNumber.text = progress.toString()
+                durationInt = progress
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+        })
+
         val actionBar = supportActionBar
 
         actionBar!!.title = "SIR Model"
@@ -85,6 +105,7 @@ class ConfigureSirModelActivity : AppCompatActivity() {
             intent.putExtra("susceptibleInt",susceptibleInt)
             intent.putExtra("infectedInt",infectedInt)
             intent.putExtra("recoveredInt",recoveredInt)
+            intent.putExtra("durationInt",durationInt)
             startActivity(intent)
         }
     }
