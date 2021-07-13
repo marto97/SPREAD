@@ -5,6 +5,7 @@ import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 
 class CanvasView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,13 +33,13 @@ class CanvasView : AppCompatActivity() {
         var balls: Array<Ball> = arrayOf()
 
         for(i in 1..susceptibleInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint, "susceptible")
         }
         for(i in 1..infectedInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint, "infected")
         }
         for(i in 1..recoveredInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint, "recovered")
         }
 
 

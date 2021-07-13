@@ -4,19 +4,32 @@ import android.graphics.Canvas
 import android.graphics.Paint
 
 
-class Ball (_xPos: Float, _yPos: Float, _width: Int, _height: Int, _paint: Paint){
+class Ball (_xPos: Float, _yPos: Float, _width: Int, _height: Int, _paint: Paint, _state: String){
     // property (data member)
-    private var xPos: Float = _xPos
-    private var yPos: Float = _yPos
+    public var xPos: Float = _xPos
+    public var yPos: Float = _yPos
     private var width = _width
     private var height = _height
     private var vX = (5..20).random().toFloat()
     private var vY = (5..20).random().toFloat()
+    public var state = _state
 
-    private val paint: Paint = _paint
+    public var paint: Paint = _paint
 
     private var ballRadius: Float = 10F
+/*
+    fun getxPos(){
+        println(xPos)
+    }
 
+    fun getyPos(){
+        println(yPos)
+    }
+
+    fun getPaint(){
+        println(paint)
+    }
+*/
     private fun moveBall() {
         xPos += vX
         yPos += vY

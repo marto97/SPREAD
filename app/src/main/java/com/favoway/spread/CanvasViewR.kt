@@ -5,6 +5,7 @@ import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 
 class CanvasViewR : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +20,9 @@ class CanvasViewR : AppCompatActivity() {
         var redPaint: Paint = Paint()
         var greenPaint: Paint = Paint()
 
-        var bluePaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
-
+        var bluePaint: Paint = Paint()
+        //bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+        bluePaint.color = Color.BLUE
         redPaint.color = Color.RED
         greenPaint.color = Color.GREEN
 
@@ -32,13 +33,13 @@ class CanvasViewR : AppCompatActivity() {
         var balls: Array<Ball> = arrayOf()
 
         for(i in 1..susceptibleInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, bluePaint, "susceptible")
         }
         for(i in 1..infectedInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, redPaint,"infected")
         }
         for(i in 1..recoveredInt){
-            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint)
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint, "recovered")
         }
 
 

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import kotlin.math.abs
 
 class BallView : View {
 
@@ -29,8 +30,8 @@ class BallView : View {
     }
 
     private fun init() {
-        bluePaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+       // bluePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        bluePaint.color = Color.BLUE
 
         redPaint.color = Color.RED
         greenPaint.color = Color.GREEN
@@ -52,7 +53,29 @@ class BallView : View {
 
         for(i in 0..sum){
             balls[i].draw(canvas)
+
+            for(j in 0..sum){
+                if (Math.abs(balls[i].xPos-balls[j].xPos) <2 && Math.abs(balls[i].yPos-balls[j].yPos)<2) {
+                //    balls[i].paint = redPaint
+                   //
+                    //println(balls[i].xPos)
+                    if ((balls[i].state=="susceptible" && balls[j].state=="infected")||(balls[i].state=="infected" && balls[j].state=="susceptible")){
+                        balls[i].paint = redPaint
+                        balls[i].state = "infected"
+                        balls[j].paint = redPaint
+                        balls[j].state = "infected"
+                    }
+                    if ((balls[i].state=="recovered" && balls[j].state=="infected")||(balls[i].state=="infected" && balls[j].state=="recovered")){
+                        balls[i].paint = greenPaint
+                        balls[i].state = "recovered"
+                        balls[j].paint = greenPaint
+                        balls[j].state = "recovered"
+                    }
+                }
+            }
         }
+
+       // println(balls[2].getxPos());
 
     }
 
