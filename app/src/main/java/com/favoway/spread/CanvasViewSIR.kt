@@ -93,7 +93,7 @@ class CanvasViewSIR : AppCompatActivity() {
 
         //Description
         val description = Description()
-        description.setText("X line = days, Y line = number of people")
+        description.setText("X axis = days, Y axis = number of people")
         description.textSize = 20f
         lineChart.setDescription(description)
 
