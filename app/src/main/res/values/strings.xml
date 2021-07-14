@@ -2,5 +2,5 @@
     <string name="app_name">SPREAD</string>
     <string name="hyperlinkSir">Learn more about SIR model at <a href="https://www.maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model">maa.org</a></string>
     <string name="hyperlinkDots">Learn more about DOTS model at <a href="https://www.the-scientist.com/reading-frames/connecting-the-dots-67839">the-scientist.com</a></string>
-    <string name="hyperlinkR">Learn more about R model at <a href="https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/epidemic-theory">healthknowledge.org.uk</a></string>
+    <string name="hyperlinkR">Learn more about Reproduction Number at <a href="https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/epidemic-theory">healthknowledge.org.uk</a></string>
 </resources>

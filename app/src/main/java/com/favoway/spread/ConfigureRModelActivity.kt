@@ -96,7 +96,7 @@ class ConfigureRModelActivity : AppCompatActivity() {
 
         val actionBar = supportActionBar
 
-        actionBar!!.title = "R Number"
+        actionBar!!.title = "Reproduction Number"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
 

@@ -14,7 +14,7 @@ class RModelActivity : AppCompatActivity() {
 
         val actionBar = supportActionBar
 
-        actionBar!!.title = "R Model"
+        actionBar!!.title = "Reproduction number"
 
         actionBar.setDisplayHomeAsUpEnabled(true)
         setupHyperlink()
