@@ -76,13 +76,13 @@ class ConfigureRModelActivity : AppCompatActivity() {
         val rNumberSeekBar: SeekBar = findViewById(R.id.RNumberSeekBarR)
         val rNumberNumber: TextView = findViewById(R.id.RNumberR)
 
-        //var rNumberInt = 1
+        var rNumberInt = 1
 
         rNumberSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 val value = (progress.toFloat() / 10.0).toFloat()
                 rNumberNumber.text = value.toString()
-                //rNumberInt = value.toInt()
+                rNumberInt = value.toInt()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -106,6 +106,7 @@ class ConfigureRModelActivity : AppCompatActivity() {
             intent.putExtra("susceptibleInt",susceptibleInt)
             intent.putExtra("infectedInt",infectedInt)
             intent.putExtra("recoveredInt",recoveredInt)
+            intent.putExtra("rNumberInt", rNumberInt)
             startActivity(intent)
         }
     }

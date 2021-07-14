@@ -29,6 +29,7 @@ class CanvasViewR : AppCompatActivity() {
         val susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
         val infectedInt = intent.getIntExtra("infectedInt", 1)
         val recoveredInt = intent.getIntExtra("recoveredInt", 1)
+        val rNumberIntSlider = intent.getIntExtra("rNumberInt",1)
 
         var balls: Array<Ball> = arrayOf()
 
@@ -42,14 +43,14 @@ class CanvasViewR : AppCompatActivity() {
             balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint, "recovered")
         }
 
-
         val animationThread = Thread {
             try {
                 var startTime: Long
                 var endTime: Long
                 while (true) {
                     startTime = System.currentTimeMillis()
-                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(balls, susceptibleInt, infectedInt, recoveredInt)
+
+                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(balls, susceptibleInt, infectedInt, recoveredInt, rNumberIntSlider)
                     findViewById<View>(R.id.ball).postInvalidate()
                     endTime = System.currentTimeMillis()
                     var time = 16-(endTime-startTime)

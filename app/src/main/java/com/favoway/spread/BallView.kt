@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import android.widget.TextView
 import kotlin.math.abs
 
 class BallView : View {
@@ -14,6 +15,7 @@ class BallView : View {
     private var susceptibleInt = 1
     private var infectedInt = 1
     private var recoveredInt = 1
+    private var rNumberIntSlider = 1
 
     private var bluePaint: Paint = Paint()
     private var redPaint: Paint = Paint()
@@ -37,10 +39,11 @@ class BallView : View {
         greenPaint.color = Color.GREEN
     }
 
-    fun parseBallsData(_balls: Array<Ball>, _susceptibleInt: Int, _infectedInt: Int, _recoveredInt: Int){
+    fun parseBallsData(_balls: Array<Ball>, _susceptibleInt: Int, _infectedInt: Int, _recoveredInt: Int, _rNumberIntSlider:Int){
         susceptibleInt = _susceptibleInt
         infectedInt = _infectedInt
         recoveredInt = _recoveredInt
+        rNumberIntSlider = _rNumberIntSlider
 
         balls = _balls
     }
@@ -55,7 +58,7 @@ class BallView : View {
             balls[i].draw(canvas)
 
             for(j in 0..sum){
-                if (Math.abs(balls[i].xPos-balls[j].xPos) <2 && Math.abs(balls[i].yPos-balls[j].yPos)<2) {
+                if (Math.abs(balls[i].xPos-balls[j].xPos) <rNumberIntSlider && Math.abs(balls[i].yPos-balls[j].yPos)<rNumberIntSlider) {
                 //    balls[i].paint = redPaint
                    //
                     //println(balls[i].xPos)
@@ -76,7 +79,9 @@ class BallView : View {
         }
 
        // println(balls[2].getxPos());
+       // val test: TextView = findViewById(R.id.susceptibleNumberChanging)
 
+       // test.text = balls.filter { s -> s.state == "infected" }.size.toString()
     }
 
 }

@@ -43,36 +43,44 @@ class CanvasViewSIR : AppCompatActivity() {
         val recoveredInt = intent.getIntExtra("recoveredInt", 1)
         val durationInt = intent.getIntExtra("durationInt", 1)
         var labelSet:String = ""
-        var loopEnd: Int = 100
+        var loopEnd:Int = 1
         for (z in 0..2) {
-
+            val values: ArrayList<Entry> = ArrayList()
             when (z) {
                 0 -> {
                     labelSet = "Susceptible"
                     loopEnd = susceptibleInt
-
-
+                    for (i in 0 until durationInt) {
+                        println(loopEnd)
+                        val `val`: Int = (loopEnd-i-1..loopEnd-i+1).random()
+                        values.add(Entry((i).toFloat(), `val`.toFloat()))
+                    }
                 }
                 1 -> {
                     labelSet = "Infected"
                     loopEnd = infectedInt
-
+                    for (i in 0 until durationInt) {
+                        println(loopEnd)
+                        val `val`: Int = (i-1..i+1).random()
+                        values.add(Entry((i).toFloat(), `val`.toFloat()))
+                    }
                 }
                 2 -> {
                     labelSet = "Recovered"
                     loopEnd = recoveredInt
-
+                    for (i in 0 until durationInt) {
+                        println(loopEnd)
+                        val `val`: Int = (i-1..i+1).random()
+                        values.add(Entry((i).toFloat(), `val`.toFloat()))
+                    }
                 }
                 else -> { // Do nothing
                 }
             }
 
 
-            val values: ArrayList<Entry> = ArrayList()
-            for (i in 0 until infectedInt) {
-                val `val`: Int = (infectedInt-i-1..infectedInt-i+1).random()
-                values.add(Entry((i).toFloat(), `val`.toFloat()))
-            }
+
+
 
             val d = LineDataSet(values, "$labelSet")
             d.lineWidth = 2.5f
