@@ -2,10 +2,10 @@ package com.favoway.spread
 
 import android.graphics.Color
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class CanvasViewR : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class CanvasViewR : AppCompatActivity() {
         redPaint.color = Color.RED
         greenPaint.color = Color.GREEN
 
-        val susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
+        var susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
         val infectedInt = intent.getIntExtra("infectedInt", 1)
         val recoveredInt = intent.getIntExtra("recoveredInt", 1)
         val rNumberIntSlider = intent.getIntExtra("rNumberInt",1)
@@ -42,6 +42,9 @@ class CanvasViewR : AppCompatActivity() {
         for(i in 1..recoveredInt){
             balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint, "recovered")
         }
+        val susceptibleNumberChanging: TextView = findViewById(R.id.susceptibleNumberChanging)
+        val infectedNumberChanging: TextView = findViewById(R.id.infectedNumberChanging)
+        val recoveredNumberChanging: TextView = findViewById(R.id.recoveredNumberChanging)
 
         val animationThread = Thread {
             try {
@@ -52,6 +55,8 @@ class CanvasViewR : AppCompatActivity() {
 
                     (findViewById<View>(R.id.ball) as BallView).parseBallsData(balls, susceptibleInt, infectedInt, recoveredInt, rNumberIntSlider)
                     findViewById<View>(R.id.ball).postInvalidate()
+
+
                     endTime = System.currentTimeMillis()
                     var time = 16-(endTime-startTime)
                     if (time>0){
@@ -66,7 +71,39 @@ class CanvasViewR : AppCompatActivity() {
             }
         }
 
+
         animationThread.start()
+
+
+        val animationThread1 = Thread {
+            try {
+                var startTime: Long
+                var endTime: Long
+                while (true) {
+                    startTime = System.currentTimeMillis()
+
+                    runOnUiThread {
+                        susceptibleNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).susceptibleIntUpdater).toString()
+                        infectedNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).infectedIntUpdater).toString()
+                        recoveredNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).recoveredIntUpdater).toString()
+                    }
+
+
+                    endTime = System.currentTimeMillis()
+                    var time = 16-(endTime-startTime)
+                    if (time>0){
+                        Thread.sleep(time)
+                    }
+                    else{
+                        Thread.sleep(150)
+                    }
+                }
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
+
+        animationThread1.start()
 
 
     }

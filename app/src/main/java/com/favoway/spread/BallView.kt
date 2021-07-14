@@ -21,6 +21,10 @@ class BallView : View {
     private var redPaint: Paint = Paint()
     private var greenPaint: Paint = Paint()
 
+    public var susceptibleIntUpdater = 1
+    public var infectedIntUpdater = 1
+    public var recoveredIntUpdater = 1
+
     constructor(context: Context?) : super(context) {
         init()
     }
@@ -46,6 +50,10 @@ class BallView : View {
         rNumberIntSlider = _rNumberIntSlider
 
         balls = _balls
+    }
+
+    fun getData(){
+        infectedInt
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -79,9 +87,11 @@ class BallView : View {
         }
 
        // println(balls[2].getxPos());
-       // val test: TextView = findViewById(R.id.susceptibleNumberChanging)
+      // val test: TextView = findViewById(R.id.susceptibleNumberChanging)
 
-       // test.text = balls.filter { s -> s.state == "infected" }.size.toString()
+        susceptibleIntUpdater = balls.filter { s -> s.state == "susceptible" }.size
+        infectedIntUpdater = balls.filter { s -> s.state == "infected" }.size
+        recoveredIntUpdater = balls.filter { s -> s.state == "recovered" }.size
     }
 
 }
