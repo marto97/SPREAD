@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "131269341595",
+    "project_id": "spread-574d3",
+    "storage_bucket": "spread-574d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131269341595:android:f99b5ccbdebb837fc9b13e",
+        "android_client_info": {
+          "package_name": "com.favoway.spread"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131269341595-gdhre7dm893s86kki7o9mtl1ftsgm6mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Om-uRwNlKTi7kic2z2bezUCBF8GK34E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131269341595-gdhre7dm893s86kki7o9mtl1ftsgm6mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
