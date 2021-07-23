@@ -19,17 +19,19 @@ class CanvasViewR : AppCompatActivity() {
 
         var redPaint: Paint = Paint()
         var greenPaint: Paint = Paint()
-
         var bluePaint: Paint = Paint()
-        //bluePaint.color = Color.argb(0xFF, 0x91, 0xD8, 0xFF)
+        var blackPaint: Paint = Paint()
+
         bluePaint.color = Color.BLUE
         redPaint.color = Color.RED
         greenPaint.color = Color.GREEN
+        blackPaint.color = Color.BLACK
 
         var susceptibleInt = intent.getIntExtra("susceptibleInt", 1)
         val infectedInt = intent.getIntExtra("infectedInt", 1)
         val recoveredInt = intent.getIntExtra("recoveredInt", 1)
         val rNumberIntSlider = intent.getIntExtra("rNumberInt",1)
+        val deadNumberInt = intent.getIntExtra("deadNumberInt",1)
 
         var balls: Array<Ball> = arrayOf()
 
@@ -42,9 +44,13 @@ class CanvasViewR : AppCompatActivity() {
         for(i in 1..recoveredInt){
             balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, greenPaint, "recovered")
         }
+        for(i in 1..deadNumberInt){
+            balls += Ball((0..1000).random().toFloat(), (0..1800).random().toFloat(), 1000,1800, blackPaint, "dead")
+        }
         val susceptibleNumberChanging: TextView = findViewById(R.id.susceptibleNumberChanging)
         val infectedNumberChanging: TextView = findViewById(R.id.infectedNumberChanging)
         val recoveredNumberChanging: TextView = findViewById(R.id.recoveredNumberChanging)
+        val deadNumberChanging: TextView = findViewById(R.id.deadNumberChanging)
 
         val animationThread = Thread {
             try {
@@ -53,7 +59,7 @@ class CanvasViewR : AppCompatActivity() {
                 while (true) {
                     startTime = System.currentTimeMillis()
 
-                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(balls, susceptibleInt, infectedInt, recoveredInt, rNumberIntSlider)
+                    (findViewById<View>(R.id.ball) as BallView).parseBallsData(balls, susceptibleInt, infectedInt, recoveredInt, rNumberIntSlider, deadNumberInt)
                     findViewById<View>(R.id.ball).postInvalidate()
 
 
@@ -86,6 +92,7 @@ class CanvasViewR : AppCompatActivity() {
                         susceptibleNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).susceptibleIntUpdater).toString()
                         infectedNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).infectedIntUpdater).toString()
                         recoveredNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).recoveredIntUpdater).toString()
+                        deadNumberChanging.text = ((findViewById<View>(R.id.ball) as BallView).deadIntUpdater).toString()
                     }
 
 

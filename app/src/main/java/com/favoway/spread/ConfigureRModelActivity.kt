@@ -94,6 +94,26 @@ class ConfigureRModelActivity : AppCompatActivity() {
             }
         })
 
+        val deadNumberSeekBar: SeekBar = findViewById(R.id.deadSeekBarR)
+        val deadNumber: TextView = findViewById(R.id.deadNumberR)
+
+        var deadNumberInt = 25
+
+        deadNumberSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                deadNumber.text = progress.toString()
+                deadNumberInt = progress
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+        })
+
         val actionBar = supportActionBar
 
         actionBar!!.title = "Reproduction Number"
@@ -106,6 +126,7 @@ class ConfigureRModelActivity : AppCompatActivity() {
             intent.putExtra("susceptibleInt",susceptibleInt)
             intent.putExtra("infectedInt",infectedInt)
             intent.putExtra("recoveredInt",recoveredInt)
+            intent.putExtra("deadNumberInt",deadNumberInt)
             intent.putExtra("rNumberInt", rNumberInt)
             startActivity(intent)
         }
