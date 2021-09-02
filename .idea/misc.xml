@@ -5,7 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_canvas_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_configure_dots_model.xml" value="0.1118659420289855" />
-        <entry key="app/src/main/res/layout/activity_intro_dots_model.xml" value="0.4669308558682825" />
+        <entry key="app/src/main/res/layout/activity_configure_sir_model.xml" value="0.1793478260869565" />
+        <entry key="app/src/main/res/layout/activity_intro_dots_model.xml" value="0.11171212378558436" />
       </map>
     </option>
   </component>
